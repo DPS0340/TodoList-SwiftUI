@@ -9,8 +9,21 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        NavigationView {
+            VStack {
+                Text("TodoList SwiftUI 🤔")
+                    .font(.largeTitle)
+                    .foregroundColor(.black)
+                Spacer()
+                NavigationLink(destination: TodoView())
+                {
+                    Text("TODOLIST")
+                        .font(.title3)
+                        .foregroundColor(.blue)
+                }
+                Spacer()
+            }
+        }
     }
 }
 
