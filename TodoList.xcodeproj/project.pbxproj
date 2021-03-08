@@ -3,11 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		47B1D1BEE3307D70E41C7FE5 /* Pods_TodoList__iOS_.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1492F894FA781ED355C0848 /* Pods_TodoList__iOS_.framework */; };
+		CCBDE06325F5EB9400437792 /* Todos.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBDE06225F5EB9400437792 /* Todos.swift */; };
+		CCBDE06425F5EB9400437792 /* Todos.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBDE06225F5EB9400437792 /* Todos.swift */; };
 		CCED593025F4EBDF0099BD96 /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCED592F25F4EBDF0099BD96 /* Tests_iOS.swift */; };
 		CCED593B25F4EBDF0099BD96 /* Tests_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCED593A25F4EBDF0099BD96 /* Tests_macOS.swift */; };
 		CCED593D25F4EBDF0099BD96 /* TodoListApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCED591425F4EBDE0099BD96 /* TodoListApp.swift */; };
@@ -51,6 +53,7 @@
 		93E6068ECC6C3C0022FAFA44 /* Pods-TodoList (macOS).release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodoList (macOS).release.xcconfig"; path = "Target Support Files/Pods-TodoList (macOS)/Pods-TodoList (macOS).release.xcconfig"; sourceTree = "<group>"; };
 		ACA3D7DE134ECCB411FD6D54 /* Pods-TodoList (iOS).release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodoList (iOS).release.xcconfig"; path = "Target Support Files/Pods-TodoList (iOS)/Pods-TodoList (iOS).release.xcconfig"; sourceTree = "<group>"; };
 		C1492F894FA781ED355C0848 /* Pods_TodoList__iOS_.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TodoList__iOS_.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CCBDE06225F5EB9400437792 /* Todos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todos.swift; sourceTree = "<group>"; };
 		CCED591425F4EBDE0099BD96 /* TodoListApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListApp.swift; sourceTree = "<group>"; };
 		CCED591525F4EBDE0099BD96 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		CCED591625F4EBDF0099BD96 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -149,6 +152,7 @@
 				CCED595525F4ECEB0099BD96 /* TodoView.swift */,
 				CCED591625F4EBDF0099BD96 /* Assets.xcassets */,
 				CCF10A7225F5922100CA3925 /* Model.xcdatamodeld */,
+				CCBDE06225F5EB9400437792 /* Todos.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -412,6 +416,7 @@
 				CCED595625F4ECEB0099BD96 /* TodoView.swift in Sources */,
 				CCED593F25F4EBDF0099BD96 /* ContentView.swift in Sources */,
 				CCF10A7425F5922100CA3925 /* Model.xcdatamodeld in Sources */,
+				CCBDE06325F5EB9400437792 /* Todos.swift in Sources */,
 				CCED593D25F4EBDF0099BD96 /* TodoListApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -423,6 +428,7 @@
 				CCED595725F4ECEB0099BD96 /* TodoView.swift in Sources */,
 				CCED594025F4EBDF0099BD96 /* ContentView.swift in Sources */,
 				CCF10A7525F5922100CA3925 /* Model.xcdatamodeld in Sources */,
+				CCBDE06425F5EB9400437792 /* Todos.swift in Sources */,
 				CCED593E25F4EBDF0099BD96 /* TodoListApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

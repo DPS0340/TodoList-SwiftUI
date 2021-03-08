@@ -11,7 +11,7 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             VStack {
-                Text("TodoList SwiftUI 🤔")
+                Text("TodoList SwiftUI ✔️")
                     .font(.largeTitle)
                     .foregroundColor(.black)
                 Spacer()
