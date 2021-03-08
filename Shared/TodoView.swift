@@ -78,6 +78,18 @@ struct TodoView: View {
         return todos
     }
     
+    func deleteOne(object: Todo) {
+        viewContext!.delete(object)
+        todos.value = todos.value.filter { $0 != object }
+    }
+    
+    func deleteAll() {
+        for todo in todos.value {
+            viewContext!.delete(todo)
+        }
+        todos.value = []
+    }
+    
     
     var body: some View {
         Text("TodoList YEAH")
@@ -93,9 +105,26 @@ struct TodoView: View {
                     Text("name: \(name)")
                     Text("until Date: \(untilDate)")
                     Text("registered Date: \(registeredDate)")
+                    Button(action: {
+                        deleteOne(object: todo)
+                    }) {
+                        Text("Delete")
+                            .foregroundColor(.white)
+                    }
+                    .background(Color.blue)
+                    .frame(minWidth: 100, maxWidth: .infinity)
                     Divider()
                 }
             }
+            Button(action: {
+                deleteAll()
+            }) {
+                Text("YEAH")
+                    .foregroundColor(.white)
+            }
+            .background(Color.blue)
+            .frame(minWidth: 100, maxWidth: .infinity)
+
             Form {
                 Text("Add Todo")
                     .font(.title2)
