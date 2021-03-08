@@ -19,11 +19,15 @@ struct TodoView: View {
     @State var todoName: String = ""
     @State var todoUntilDate: Date = Date()
     @State var todoRegisteredDate: Date = Date()
+    @State var todoContent: String = ""
     @ObservedObject var todos = Todos()
+    @State var showingSheet = false
+
     
     
     func resetForm() {
         todoName = ""
+        todoContent = ""
         todoUntilDate = Date()
     }
     
@@ -63,6 +67,7 @@ struct TodoView: View {
         let obj = NSManagedObject(entity: entity, insertInto: viewContext)
         guard let todo = obj as? Todo else { return }
         todo.name = todoName
+        todo.content = todoContent
         todo.untilDate = todoUntilDate
         todo.registeredDate = todoRegisteredDate
         saveContext()
@@ -100,11 +105,17 @@ struct TodoView: View {
             List {
                 ForEach(todos.value, id: \.id) { (todo: Todo) in
                     let name = todo.name ?? "None"
+                    let content = todo.content ?? "None"
                     let untilDate = todo.untilDate != nil ? inputFormatter.string(from: todo.untilDate!) : "None"
                     let registeredDate = todo.registeredDate != nil ? inputFormatter.string(from: todo.registeredDate!) : "None"
-                    Text("name: \(name)")
-                    Text("until Date: \(untilDate)")
-                    Text("registered Date: \(registeredDate)")
+                    Button(action: {
+                        showingSheet = true
+                    }) {
+                        Text("name: \(name)")
+                    }
+                    .actionSheet(isPresented: $showingSheet) {
+                        ActionSheet(title: Text("\(name)"), message: Text("\(content) \(registeredDate) - \(untilDate)"), buttons: [.default(Text("Dismiss")), .cancel(Text("Cancel"))])
+                    }
                     Button(action: {
                         deleteOne(object: todo)
                     }) {
@@ -112,40 +123,28 @@ struct TodoView: View {
                             .foregroundColor(.white)
                     }
                     .background(Color.blue)
-                    .frame(minWidth: 100, maxWidth: .infinity)
-                    Divider()
+                    .padding()
                 }
-            }
-            Button(action: {
-                deleteAll()
-            }) {
-                Text("YEAH")
-                    .foregroundColor(.white)
-            }
-            .background(Color.blue)
-            .frame(minWidth: 100, maxWidth: .infinity)
-
-            Form {
+                Button(action: {
+                    deleteAll()
+                }) {
+                    Text("YEAH")
+                        .foregroundColor(titleColor)
+                }
                 Text("Add Todo")
                     .font(.title2)
-                Section {
-                    TextField("Name", text: $todoName)
-                    DatePicker(selection: $todoRegisteredDate, in: Date()...) {
-                        Text("Until Date")
-                    }
-                    Button(action: {
-                        submit()
-                    }) {
-                        Text("Submit")
-                    }
-                    .foregroundColor(.blue)
+                TextField("Name", text: $todoName)
+                TextField("Content", text: $todoContent)
+                DatePicker(selection: $todoRegisteredDate, in: Date()...) {
+                    Text("Until Date")
                 }
+                Button(action: {
+                    submit()
+                }) {
+                    Text("Submit")
+                }
+                .foregroundColor(.blue)
             }
-            .padding()
-            .onAppear() {
-                UITableView.appearance().backgroundColor = .white
-            }
-            Spacer()
         }
     }
     
