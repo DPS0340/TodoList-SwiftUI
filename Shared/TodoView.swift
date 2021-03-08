@@ -123,6 +123,7 @@ struct TodoView: View {
                             .foregroundColor(.red)
                     }
                 }
+                Divider()
                 Button(action: {
                     deleteAll()
                 }) {
