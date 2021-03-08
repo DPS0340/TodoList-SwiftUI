@@ -45,12 +45,12 @@ struct TodoView: View {
             do {
                 // save phase
                 try viewContext!.save()
-                // load phase
-                todos.value = fetch()
             } catch {
                 print("An error occurred while saving: \(error)")
             }
         }
+        // load phase
+        todos.value = fetch()
     }
     
     func submit() {
@@ -78,7 +78,8 @@ struct TodoView: View {
         return todos
     }
     
-    @ViewBuilder func initBody() -> some View {
+    
+    var body: some View {
         Text("TodoList YEAH")
             .font(.largeTitle)
             .foregroundColor(titleColor)
@@ -119,18 +120,13 @@ struct TodoView: View {
         }
     }
     
-    
-    var body: some View {
-        return initBody()
-    }
-    
     init() {
+        initContainer()
         print("container viewContext: \(container.viewContext)")
         viewContext = container.viewContext
         viewContext!.automaticallyMergesChangesFromParent = true
-        todos.value = fetch()
         inputFormatter.dateFormat = dateFormat
-        initContainer()
+        todos.value = fetch()
     }
     
 }
