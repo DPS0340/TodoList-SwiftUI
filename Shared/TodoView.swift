@@ -122,7 +122,6 @@ struct TodoView: View {
                         Text("Delete")
                             .foregroundColor(.red)
                     }
-                    .padding()
                 }
                 Button(action: {
                     deleteAll()
