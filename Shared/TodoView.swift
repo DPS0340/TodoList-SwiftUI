@@ -14,7 +14,7 @@ struct TodoView: View {
     var viewContext: NSManagedObjectContext? = nil
     let titleColor: Color = Color(#colorLiteral(red: 0.4731488228, green: 0.7680833936, blue: 0.8298937678, alpha: 1))
     let inputFormatter = DateFormatter()
-    let dateFormat = "yyyy-MM-dd"
+    let dateFormat = "yyyy-MM-dd:hh-mm-ss"
     
     @State var todoName: String = ""
     @State var todoUntilDate: Date = Date()
