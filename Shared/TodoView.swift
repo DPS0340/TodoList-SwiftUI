@@ -120,9 +120,8 @@ struct TodoView: View {
                         deleteOne(object: todo)
                     }) {
                         Text("Delete")
-                            .foregroundColor(.white)
+                            .foregroundColor(.red)
                     }
-                    .background(Color.blue)
                     .padding()
                 }
                 Button(action: {
