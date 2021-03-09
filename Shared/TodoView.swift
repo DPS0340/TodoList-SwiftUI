@@ -103,27 +103,35 @@ struct TodoView: View {
         Spacer()
         VStack {
             List {
+                // Render given values from Core Data
                 ForEach(todos.value, id: \.id) { (todo: Todo) in
                     let name = todo.name ?? "None"
                     let content = todo.content ?? "None"
                     let untilDate = todo.untilDate != nil ? inputFormatter.string(from: todo.untilDate!) : "None"
                     let registeredDate = todo.registeredDate != nil ? inputFormatter.string(from: todo.registeredDate!) : "None"
-                    Button(action: {
-                        showingSheet = true
-                    }) {
-                        Text("name: \(name)")
-                    }
-                    .actionSheet(isPresented: $showingSheet) {
-                        ActionSheet(title: Text("\(name)"), message: Text("\(content) \(registeredDate) - \(untilDate)"), buttons: [.default(Text("Dismiss")), .cancel(Text("Cancel"))])
-                    }
-                    Button(action: {
-                        deleteOne(object: todo)
-                    }) {
+                    HStack {
+                        // Title button
+                        Text("\(name)")
+                            .onTapGesture {
+                                showingSheet = true
+                            }
+                            .actionSheet(isPresented: $showingSheet) {
+                                ActionSheet(
+                                    title: Text("\(name)"),
+                                    message: Text("\(content) \(registeredDate) - \(untilDate)"),
+                                    buttons: [.default(Text("Dismiss"))])
+                            }
+                        Spacer()
+                        // Delete button
                         Text("Delete")
                             .foregroundColor(.red)
+                            .onTapGesture {
+                                deleteOne(object: todo)
+                            }
                     }
                 }
                 Divider()
+                // Delete all button
                 Button(action: {
                     deleteAll()
                 }) {
